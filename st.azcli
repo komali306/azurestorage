@@ -1,0 +1,12 @@
+# create a resource group
+az group create --location eastus --name rg
+
+# create a storage account
+az storage account create --name ltstoring06 --resource-group rg --location eastus --allow-blob-public-access true --kind StorageV2 --access-tier Hot --sku Standard_ZRS
+
+# create a storage container
+az storage container create --name videos --account-name ltstoring06 --public-access blob
+
+# uploading  documents
+az storage blob upload --container-name videos --name menu1 --file ./MENU1.PDF --account-name ltstoring06 
+az storage blob upload --container-name videos --name uppena.mp3 --file ~/downloads/uppenasong.mp3 --account-name ltstoring06 
